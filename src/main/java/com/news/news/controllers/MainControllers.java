@@ -25,4 +25,10 @@ public class MainControllers {
         return "partners";
     }
 
+    @GetMapping("/about")
+    public String about (Model model){
+        model.addAttribute("about", "О нас");
+        return "about";
+    }
+
 }
