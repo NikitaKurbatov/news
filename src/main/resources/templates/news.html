@@ -13,7 +13,8 @@
     <div th:each="el : ${allnews}" class="alert alert-info mt-2">
         <h3 th:text = "${el.title}"></h3>
         <p th:text = "${el.anons}"></p>
-        <a th:href="'/news/' + ${el.id}" class="btn btn-warning">Подробнее</a>
+        <p><b>Просмотров: </b><span th:text = "${el.views}"></p>
+        <a th:href="'/news/' + ${el.id}" class="btn btn-outline-info">Подробнее</a>
     </div>
 </div>
 
