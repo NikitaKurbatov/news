@@ -7,9 +7,26 @@
 </head>
 <body>
 <header th:insert="blocks/header :: header"></header>
-<div class = "contener">
 
+<div class="container mt-5">
+  <div class="text-center">
+    <form action="/login" method="post" >
+      <h1 class="h3 mb-3">Авторизация</h1>
+
+      <div class="form-floating">
+        <input type="email" class="form-control" id="floatingInput" name="login" placeholder="name@example.com">
+        <label for="floatingInput">Логин</label>
+      </div>
+      <div class="form-floating mt-3">
+        <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
+        <label for="floatingPassword">Пароль</label>
+      </div>
+
+      <button class="btn btn-lg btn-primary mt-3" type="submit">Войти</button>
+    </form>
+  </div>
 </div>
+
 <div th:insert="blocks/footer :: footer"></div>
 </body>
 </html>
