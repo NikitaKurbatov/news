@@ -27,7 +27,7 @@ public class NewsController {
     }
     @GetMapping("/news/add")
     public String newsAdd (Model model){
-        return "news-add";
+        return "admin/news-add";
     }
     @PostMapping("/news/add")
     public String newsNewsAdd (@RequestParam String title, @RequestParam String anons, @RequestParam String full_text, Model model){
@@ -56,7 +56,7 @@ public class NewsController {
             ArrayList<News> result = new ArrayList<>();
             news.ifPresent(result::add);
             model.addAttribute("news", result);
-            return "news-edit";
+            return "admin/news-edit";
         }
     }
     @PostMapping("/news/{id}/edit")
