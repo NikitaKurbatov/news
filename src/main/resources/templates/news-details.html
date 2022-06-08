@@ -13,6 +13,7 @@
         <h3 th:text = "${el.title}"></h3>
         <p th:text = "${el.anons}"></p>
         <p th:text = "${el.full_text}"></p>
+        <a th:href="'/news'" class="btn btn-warning">К новостям</a></br></br>
         <a th:href="'/news/' + ${el.id} + '/edit'" class="btn btn-warning">Редактировать</a>
         <form th:action="'/news/' + ${el.id} + '/remove'" method="post">
             <button type="submit" class="btn btn-danger mt-3">Удалить</button>
