@@ -21,7 +21,7 @@
                     <p class="card-text" th:text = "${el.anons}"></p>
                     <p><b>Просмотров: </b><span th:text = "${el.views}"></span></p>
                     <p th:text = "${el.date_news}"></p>
-                    <a href="'/news/' + ${el.id}" class="btn btn-primary">Подробнее</a>
+                    <a th:href="'/news/' + ${el.id}" class="btn btn-primary">Подробнее</a>
                 </div>
             </div>
         </div>
