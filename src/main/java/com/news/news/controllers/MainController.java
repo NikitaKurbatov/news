@@ -14,41 +14,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 @Controller
 public class MainController {
     @Autowired
     private ClientRepository clientRepository;
-    private Document doc;
-    private Thread secThread;
-    private Runnable runnable;
 
-    private void init(){
-        runnable = new Runnable() {
-            @Override
-            public void run() {
-                getWeb();
-            }
-        };
-        secThread = new Thread(runnable);
-        secThread.start();
-    }
-    private void getWeb(){
-        try {
-            doc = Jsoup.connect("https://yandex.ru/").get();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
     @GetMapping("/")
     public String startHome(Model model) {
         model.addAttribute("home", "Главная страница");
-        init();
-        //model.addAttribute("euro", doc.title());
         return "home";
     }
-
     @GetMapping("/home")
     public String home(Model model) {
         model.addAttribute("home", "Главная страница");
@@ -59,7 +36,6 @@ public class MainController {
         model.addAttribute("partners", "Партнеры");
         return "partners";
     }
-
     @GetMapping("/about")
     public String about (Model model){
         model.addAttribute("about", "О нас");
@@ -67,9 +43,9 @@ public class MainController {
     }
     @PostMapping("/request_call")
     public String newsNewsAdd (@RequestParam String name, @RequestParam String mobile_number, @RequestParam String text, Model model){
-        Client client = new Client(name, mobile_number,text);
+        LocalDate date = LocalDate.now();
+        Client client = new Client(name, mobile_number, text, date);
         clientRepository.save(client);
-        System.out.println(client);
         return "redirect:/news";
     }
 
