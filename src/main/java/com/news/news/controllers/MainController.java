@@ -1,16 +1,24 @@
 package com.news.news.controllers;
 
 
+import com.news.news.models.Client;
+import com.news.news.models.News;
+import com.news.news.repo.ClientRepository;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
 
 @Controller
 public class MainController {
+    @Autowired
+    private ClientRepository clientRepository;
     private Document doc;
     private Thread secThread;
     private Runnable runnable;
@@ -56,6 +64,13 @@ public class MainController {
     public String about (Model model){
         model.addAttribute("about", "О нас");
         return "about";
+    }
+    @PostMapping("/request_call")
+    public String newsNewsAdd (@RequestParam String name, @RequestParam String mobile_number, @RequestParam String text, Model model){
+        Client client = new Client(name, mobile_number,text);
+        clientRepository.save(client);
+        System.out.println(client);
+        return "redirect:/news";
     }
 
 }

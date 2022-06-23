@@ -17,6 +17,9 @@
 
                 <div class="text-center">
                     <div class="text-end">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Заказать звонок
+                        </button>
                         <button type="button" class="btn btn-outline-light me-2">
                             <a href="/login" class="nav-link px-2 text-white">Авторизация</a>
                         </button>
@@ -25,4 +28,29 @@
             </div>
         </div>
     </header>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Заказать звонок</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/request_call" method="post">
+                        <input type="text" name="name" placeholder="Имя" class="form-control"><br>
+                        <input type="text" name="mobile_number" placeholder="Номер телефона" class="form-control"><br>
+                        <textarea name="text" placeholder="Ваш вопрос" class="form-control"></textarea><br>
+                        <button type="submit" class="btn btn-primary">Заказать</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Modal-->
 </div>
+
+
