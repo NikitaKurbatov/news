@@ -15,7 +15,7 @@ public class PriceController {
 
     @GetMapping("/price")
     public String price (Model model){
-        model.addAttribute("price", "Цена");
+        model.addAttribute("price", "Цены на услуги");
         Iterable<Price> allprice = priceRepository.findAll();
         model.addAttribute("allprice", allprice);
         return "price";

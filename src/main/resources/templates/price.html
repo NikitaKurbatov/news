@@ -10,16 +10,31 @@
 
 <div class="container mt-5">
 
-    <div class="container mt-5">
-        <h1 th:text="${price}"/>
-        <div th:each="el : ${allprice}" class="alert alert-info mt-2">
-            <h3 th:text = "${el.full_text}"></h3>
-            <p th:text = "${el.text}"></p>
+    <h1 align="center" th:text="${price}"/>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">№</th>
+                <th scope="col">Название</th>
+                <th scope="col">Описание</th>
+                <th scope="col">Цена</th>
+            </tr>
+        </thead>
+        <tbody>
+        <div th:each="el : ${allprice}">
+            <tr class="table-light">
+                <th scope="row"><p th:text = "${el.id}"></p></th>
+                <td><p th:text = "${el.text}"></p></td>
+                <td><p th:text = "${el.full_text}"></p></td>
+                <td><p th:text = "${el.price}"></p></td>
+            </tr>
         </div>
-    </div>
+        </tbody>
+    </table>
 
 </div>
 
 <div th:insert="blocks/footer :: footer"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
