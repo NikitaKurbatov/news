@@ -2,10 +2,7 @@ package com.news.news.controllers;
 
 
 import com.news.news.models.Client;
-import com.news.news.models.News;
 import com.news.news.repo.ClientRepository;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.io.IOException;
 import java.time.LocalDate;
 
 @Controller
@@ -47,6 +43,10 @@ public class MainController {
         Client client = new Client(name, mobile_number, text, date);
         clientRepository.save(client);
         return "redirect:/news";
+    }
+    @GetMapping("/login")
+    public String login(Model model) {
+        return "home";
     }
 
 }
