@@ -7,22 +7,50 @@
                 </a>
 
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="/home" class="nav-link px-2 text-white">Главная</a></li>
-                    <li><a href="/news" class="nav-link px-2 text-white">Новости</a></li>
-                    <li><a href="/price" class="nav-link px-2 text-white">Цены</a></li>
-                    <li><a href="/partners" class="nav-link px-2 text-white">Партнеры</a></li>
-                    <li><a href="/about" class="nav-link px-2 text-white">О нас</a></li>
+                    <li><a href="/home" class="nav-link px-2 text-white btn-outline-secondary">Главная</a></li>
+                    <li><a href="/news" class="nav-link px-2 text-white btn-outline-secondary">Новости</a></li>
+                    <li><a href="/price" class="nav-link px-2 text-white btn-outline-secondary">Цены</a></li>
+                    <li><a href="/partners" class="nav-link px-2 text-white btn-outline-secondary">Партнеры</a></li>
+                    <li><a href="/about" class="nav-link px-2 text-white btn-outline-secondary">О нас</a></li>
+                    <li><a href="/news/add" class="nav-link px-2 text-white btn-outline-secondary">Добавить новость</a></li>
                 </ul>
 
-                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                    <input type="search" class="form-control form-control-dark text-white bg-dark" placeholder="Search..." aria-label="Search">
-                </form>
-
-                <div class="text-end">
-                    <button type="button" class="btn btn-outline-light me-2">Login</button>
-                    <button type="button" class="btn btn-warning">Sign-up</button>
+                <div class="text-center">
+                    <div class="text-end">
+                        <button type="button" class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Заказать звонок
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary">
+                            <a href="/login" class="link-light text-decoration-none">Авторизация</a>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Заказать звонок</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/request_call" method="post">
+                        <input type="text" name="name" id="validationServer01" placeholder="Имя" class="form-control" required><br>
+                        <input type="text" name="mobile_number" placeholder="+79999990000" class="form-control" required pattern="[+7]{10}]"><br>
+                        <textarea name="text" placeholder="Ваш вопрос" class="form-control"></textarea><br>
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">Заказать</button>
+                    </form>
+                </div>
+<!--                <div class="modal-footer">-->
+<!--                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>-->
+<!--                </div>-->
+            </div>
+        </div>
+    </div>
+    <!--Modal-->
 </div>
+
+

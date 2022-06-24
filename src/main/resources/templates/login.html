@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Авторизация</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+
+<div class="container mt-5">
+  <div class="text-center">
+    <form action="/login" method="post" >
+      <h1 class="h3 mb-3">Авторизация</h1>
+
+      <div class="form-floating">
+        <input class="form-control" id="floatingInput" name="login">
+        <label for="floatingInput">Логин</label>
+      </div>
+      <div class="form-floating mt-3">
+        <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
+        <label for="floatingPassword">Пароль</label>
+      </div>
+
+      <button class="btn btn-lg btn-primary mt-3" type="submit">Войти</button>
+    </form>
+  </div>
+</div>
+
+<div th:insert="blocks/footer :: footer"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+package com.news.news.repo;import com.news.news.models.Client;import com.news.news.models.Price;import org.springframework.data.repository.CrudRepository;public interface ClientRepository extends CrudRepository<Client, Long> {}
