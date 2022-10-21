@@ -18,6 +18,11 @@
   </form>
 </div>
 
+<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+<form th:action="@{/logout}" method="post">
+  <input type="submit" value="Выйти"/>
+</form>
+
 <div th:insert="blocks/footer :: footer"></div>
 </body>
 </html>
