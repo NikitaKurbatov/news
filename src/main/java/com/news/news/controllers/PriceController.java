@@ -23,6 +23,8 @@ public class PriceController {
         model.addAttribute("allprice", allprice);
         return "price";
     }
+
+
     @PostMapping("/search/price")
     public String priceSearch (@RequestParam String text, Model model){
        if (text.length() == 0) {
