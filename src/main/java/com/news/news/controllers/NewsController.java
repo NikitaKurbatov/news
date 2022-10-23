@@ -10,7 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Optional;
 
 @Controller
@@ -25,13 +28,10 @@ public class NewsController {
         model.addAttribute("allnews", news);
         return "news";
     }
-    @GetMapping("/news/add")
-    public String newsAdd (Model model){
-        return "admin/news-add";
-    }
-    @PostMapping("/news/add")
+    @PostMapping("/news_add")
     public String newsNewsAdd (@RequestParam String title, @RequestParam String anons, @RequestParam String full_text, Model model){
-        News news = new News(title, anons, full_text);
+
+        News news = new News(title, anons, full_text, null);
         newsRepository.save(news);
         return "redirect:/news";
     }

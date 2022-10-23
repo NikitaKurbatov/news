@@ -1,5 +1,6 @@
 package com.news.news.controllers;
 
+import com.news.news.models.News;
 import com.news.news.models.Price;
 import com.news.news.repo.PriceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,6 @@ public class PriceController {
         model.addAttribute("allprice", allprice);
         return "price";
     }
-
-
     @PostMapping("/search/price")
     public String priceSearch (@RequestParam String text, Model model){
        if (text.length() == 0) {
@@ -36,6 +35,12 @@ public class PriceController {
 //            Optional<Price> SearchUslug = priceRepository.findAllByFull_textContains(text);
 //            model.addAttribute("allprice", SearchUslug);
 //        }
+        return "redirect:/price";
+    }
+    @PostMapping("/servise_add")
+    public String serviseAdd (@RequestParam String text, @RequestParam String full_text, @RequestParam String price, Model model){
+        Price servise = new Price(text, full_text, price);
+        priceRepository.save(servise);
         return "redirect:/price";
     }
 }

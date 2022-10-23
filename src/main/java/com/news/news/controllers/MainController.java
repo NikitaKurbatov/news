@@ -37,16 +37,20 @@ public class MainController {
         model.addAttribute("about", "О нас");
         return "about";
     }
+    @GetMapping("/login")
+    public String login(Model model) {
+        return "login";
+    }
+    @GetMapping("/admin")
+    public String admin(Model model) {
+        return "admin";
+    }
     @PostMapping("/request_call")
     public String newsNewsAdd (@RequestParam String name, @RequestParam String mobile_number, @RequestParam String text, Model model){
         LocalDate date = LocalDate.now();
         Client client = new Client(name, mobile_number, text, date);
         clientRepository.save(client);
         return "redirect:/news";
-    }
-    @GetMapping("/login")
-    public String login(Model model) {
-        return "login";
     }
 
 }

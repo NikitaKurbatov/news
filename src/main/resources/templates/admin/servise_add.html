@@ -1,0 +1,22 @@
+<div th:fragment = "servise_add">
+    <!-- Modal -->
+    <div class="modal fade" id="addServise" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Добавить услугу</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/servise_add" method="post">
+                        <input type="text" name="text" placeholder="Введите название услуги" class="form-control"><br>
+                        <input type="text" name="full_text" placeholder="Введите описание услуги" class="form-control"><br>
+                        <input type="text" name="price" placeholder="Введите цену" class="form-control"><br>
+                        <button type="submit" class="btn btn-success">Добавить услугу</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Modal-->
+</div>

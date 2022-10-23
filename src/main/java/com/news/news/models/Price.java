@@ -12,16 +12,15 @@ import javax.persistence.Id;
 public class Price {
     @Id
     private long id;
-    private long price;
-    private String text, full_text;
+    private String price, text, full_text;
 
     public Price() {
     }
 
-    public Price(long price, String text, String full_text) {
-        this.price = price;
+    public Price(String text, String full_text, String price) {
         this.text = text;
         this.full_text = full_text;
+        this.price = price;
     }
 }
 
