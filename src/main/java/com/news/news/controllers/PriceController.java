@@ -4,6 +4,8 @@ import com.news.news.models.News;
 import com.news.news.models.Price;
 import com.news.news.repo.PriceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Optional;
+import java.util.stream.IntStream;
 
 @Controller
 public class PriceController {
@@ -18,10 +21,11 @@ public class PriceController {
     PriceRepository priceRepository;
 
     @GetMapping("/price")
-    public String price (Model model){
+    public String price (@RequestParam(value = "page", required = false, defaultValue = "0") Integer page, Model model){
         model.addAttribute("price", "Цены на услуги");
-        Iterable<Price> allprice = priceRepository.findAll();
-        model.addAttribute("allprice", allprice);
+        Page<Price> pagePrices = priceRepository.findAll(PageRequest.of(page, 5));
+        model.addAttribute("pagePrices", pagePrices);
+        model.addAttribute("numbers", IntStream.range(0, pagePrices.getTotalPages()).toArray());
         return "price";
     }
     @PostMapping("/search/price")

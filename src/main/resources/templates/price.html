@@ -25,7 +25,7 @@
             </tr>
         </thead>
         <tbody>
-        <div th:each="el : ${allprice}">
+        <div th:each="el : ${pagePrices.content}">
             <tr class="table-light">
                 <th scope="row"><p th:text = "${el.id}"></p></th>
                 <td><p th:text = "${el.text}"></p></td>
@@ -35,6 +35,15 @@
         </div>
         </tbody>
     </table>
+    <!--    Пагинация -->
+    <ul class="pagination pagination-ls" th:if = "${pagePrices.totalPages > 1}">
+        <li class="page-item" th:each="pageNumber : ${numbers}"
+            th:class="${pageNumber == pagePrices.number} ? 'page-item active'">
+            <a class="page-link" th:href="@{'/price?page=' + ${pageNumber}}"
+               th:text="${pageNumber + 1}"></a>
+        </li>
+    </ul>
+    <!--    Пагинация -->
 
 </div>
 
