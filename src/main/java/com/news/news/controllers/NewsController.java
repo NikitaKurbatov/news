@@ -3,6 +3,8 @@ package com.news.news.controllers;
 import com.news.news.models.News;
 import com.news.news.repo.NewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,11 +12,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Optional;
+import java.util.stream.IntStream;
 
 @Controller
 public class NewsController {
@@ -22,16 +22,17 @@ public class NewsController {
     private NewsRepository newsRepository;
 
     @GetMapping("/news")
-    public String news (Model model){
+    public String news (@RequestParam(value = "page", required = false, defaultValue = "0") Integer page, Model model){
         model.addAttribute("news", "Новости");
-        Iterable<News> news = newsRepository.findAll();
-        model.addAttribute("allnews", news);
+        Page<News> pageNews = newsRepository.findAll(PageRequest.of(page, 2));
+        model.addAttribute("pageNews", pageNews);
+        model.addAttribute("numbers", IntStream.range(0, pageNews.getTotalPages()).toArray());
         return "news";
     }
     @PostMapping("/news_add")
     public String newsNewsAdd (@RequestParam String title, @RequestParam String anons, @RequestParam String full_text, Model model){
 
-        News news = new News(title, anons, full_text, null);
+        News news = new News(title, anons, full_text);
         newsRepository.save(news);
         return "redirect:/news";
     }
@@ -73,5 +74,4 @@ public class NewsController {
         newsRepository.deleteById(id);
         return "redirect:/news";
     }
-
 }
