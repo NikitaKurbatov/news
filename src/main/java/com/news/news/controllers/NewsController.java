@@ -25,8 +25,9 @@ public class NewsController {
     public String news (@RequestParam(value = "page", required = false, defaultValue = "0") Integer page, Model model){
         model.addAttribute("news", "Новости");
         Page<News> pageNews = newsRepository.findAll(PageRequest.of(page, 2));
-        model.addAttribute("pageNews", pageNews);
+        model.addAttribute("requested_page", pageNews);
         model.addAttribute("numbers", IntStream.range(0, pageNews.getTotalPages()).toArray());
+        model.addAttribute("namePage", "/news");
         return "news";
     }
     @PostMapping("/news_add")

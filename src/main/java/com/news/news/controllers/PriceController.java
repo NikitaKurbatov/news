@@ -24,8 +24,9 @@ public class PriceController {
     public String price (@RequestParam(value = "page", required = false, defaultValue = "0") Integer page, Model model){
         model.addAttribute("price", "Цены на услуги");
         Page<Price> pagePrices = priceRepository.findAll(PageRequest.of(page, 5));
-        model.addAttribute("pagePrices", pagePrices);
+        model.addAttribute("requested_page", pagePrices);
         model.addAttribute("numbers", IntStream.range(0, pagePrices.getTotalPages()).toArray());
+        model.addAttribute("namePage", "/price");
         return "price";
     }
     @PostMapping("/search/price")

@@ -1,0 +1,9 @@
+<div th:fragment = "pagination">
+    <ul class="pagination pagination-ls" th:if = "${requested_page.totalPages > 0}">
+        <li class="page-item" th:each="pageNumber : ${numbers}"
+            th:class="${pageNumber == requested_page.number} ? 'page-item active'">
+            <a class="page-link" th:href="@{${namePage} + '?page=' + ${pageNumber}}"
+               th:text="${pageNumber + 1}"></a>
+        </li>
+    </ul>
+</div>
