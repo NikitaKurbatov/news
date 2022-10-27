@@ -12,8 +12,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.IntStream;
+
+import static java.awt.SystemColor.text;
 
 @Controller
 public class PriceController {
@@ -30,15 +33,20 @@ public class PriceController {
         return "price";
     }
     @PostMapping("/search/price")
-    public String priceSearch (@RequestParam String text, Model model){
-       if (text.length() == 0) {
-           Iterable<Price> allprice = priceRepository.findAll();
+    public String priceSearch (@RequestParam(value = "page", required = false, defaultValue = "0") Integer page, @RequestParam (required = true, defaultValue = "") String text, Model model){
+//       if (text == "") {
+           Page<Price> pagePrices = priceRepository.findAll(PageRequest.of(page, 5));
+           model.addAttribute("requested_page", pagePrices);
+           model.addAttribute("numbers", IntStream.range(0, pagePrices.getTotalPages()).toArray());
+           model.addAttribute("namePage", "/price");
            model.addAttribute("price", "Цены на услуги");
-           model.addAttribute("allprice", allprice);
-       }
+//       }
 //       else {
-//            Optional<Price> SearchUslug = priceRepository.findAllByFull_textContains(text);
-//            model.addAttribute("allprice", SearchUslug);
+//           Page<Price> pagePrices = priceRepository.findByTextContains(text);
+//           model.addAttribute("requested_page", pagePrices);
+//           model.addAttribute("numbers", IntStream.range(0, pagePrices.getTotalPages()).toArray());
+//           model.addAttribute("namePage", "/price");
+//           model.addAttribute("price", "Цены на услуги");
 //        }
         return "redirect:/price";
     }
