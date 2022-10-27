@@ -10,5 +10,5 @@ import java.util.List;
 
 public interface PriceRepository extends CrudRepository<Price, Integer> {
     Page<Price> findAll(Pageable pageable);
-    Iterable<Price> findByTextContains(String text);
+    Page<Price> findByTextContains(String text, Pageable pageable);
 }

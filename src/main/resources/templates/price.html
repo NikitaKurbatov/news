@@ -11,7 +11,7 @@
 <div class="container mt-5">
 
     <h1 align="center" th:text="${price}"/>
-    <form action="/search/price" class="d-flex" method="post" role="search">
+    <form action="/price/" class="d-flex" method="get" role="search">
         <input class="form-control me-2" type="text" name="text" placeholder="Введите название услуги" aria-label="Search">
         <button class="btn btn-outline-primary" type="submit">Найти</button>
     </form>

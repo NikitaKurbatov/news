@@ -9,6 +9,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -32,10 +33,10 @@ public class PriceController {
         model.addAttribute("namePage", "/price");
         return "price";
     }
-    @PostMapping("/search/price")
-    public String priceSearch (@RequestParam(value = "page", required = false, defaultValue = "0") Integer page, @RequestParam (required = true, defaultValue = "") String text, Model model){
+    @GetMapping("/price/{test}")
+    public String priceSearch (@RequestParam(value = "page", required = false, defaultValue = "0") Integer page, @PathVariable(value = "text", required = false) String text, Model model){
 //       if (text == "") {
-           Page<Price> pagePrices = priceRepository.findAll(PageRequest.of(page, 5));
+           Page<Price> pagePrices = priceRepository.findByTextContains(text, PageRequest.of(page, 5));
            model.addAttribute("requested_page", pagePrices);
            model.addAttribute("numbers", IntStream.range(0, pagePrices.getTotalPages()).toArray());
            model.addAttribute("namePage", "/price");
