@@ -18,7 +18,7 @@
                 <div class="text-center">
                     <div class="text-end">
                         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#registrationModal">
-                            <a class="link-light text-decoration-none">Зарегистрироваться</a>
+                            <a href="/registration" class="link-light text-decoration-none">Зарегистрироваться</a>
                         </button>
                         <button type="button" class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#callModal">
                             <a class="link-light text-decoration-none">Заказать звонок</a>
@@ -51,27 +51,7 @@
         </div>
     </div>
     <!--Modal Call-->
-    <!-- Modal Registration-->
-    <div class="modal fade" id="registrationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Регистрация</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="/registration" method="post">
-                        <input type="email" name="login" placeholder="Введите логин" class="form-control" required><br>
-                        <input type="password" name="password" placeholder="Введите пароль" class="form-control" required><br>
-                        <input type="password_2" name="password" placeholder="Введите пароль" class="form-control" required><br>
-                        <input type="number" name="mobile_number" aria-label="+7" placeholder="+79999990000" class="form-control" required><br>
-                        <button type="submit" class="btn btn-primary btn-lg btn-block">Зарегистрироваться</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Modal Registration-->
+
 </div>
 
 

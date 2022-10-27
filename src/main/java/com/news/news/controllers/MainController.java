@@ -47,8 +47,7 @@ public class MainController {
     }
     @PostMapping("/request_call")
     public String newsNewsAdd (@RequestParam String name, @RequestParam String mobile_number, @RequestParam String text, Model model){
-        LocalDate date = LocalDate.now();
-        Client client = new Client(name, mobile_number, text, date);
+        Client client = new Client(name, mobile_number, text);
         clientRepository.save(client);
         return "redirect:/news";
     }

@@ -42,10 +42,5 @@ public class PriceController {
 //        }
         return "redirect:/price";
     }
-    @PostMapping("/servise_add")
-    public String serviseAdd (@RequestParam String text, @RequestParam String full_text, @RequestParam String price, Model model){
-        Price servise = new Price(text, full_text, price);
-        priceRepository.save(servise);
-        return "redirect:/price";
-    }
+
 }
