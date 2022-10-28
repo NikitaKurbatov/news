@@ -8,7 +8,8 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 
-public interface PriceRepository extends CrudRepository<Price, Integer> {
-    Page<Price> findAll(Pageable pageable);
-    Page<Price> findByTextContains(String text, Pageable pageable);
+public interface PriceRepository extends CrudRepository<Price, Long> {
+    List<Price> findAll();
+    List<Price> findByText(String text);
+
 }

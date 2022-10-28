@@ -11,8 +11,8 @@
 <div class="container mt-5">
 
     <h1 align="center" th:text="${price}"/>
-    <form action="/price/" class="d-flex" method="get" role="search">
-        <input class="form-control me-2" type="text" name="text" placeholder="Введите название услуги" aria-label="Search">
+    <form action="/price/search" class="d-flex" method="post" role="search">
+        <input class="form-control me-4" name="text" placeholder="Поиск услуги" aria-label="Search" required>
         <button class="btn btn-outline-primary" type="submit">Найти</button>
     </form>
     <table class="table">
@@ -25,7 +25,7 @@
             </tr>
         </thead>
         <tbody>
-        <div th:each="el : ${requested_page.content}">
+        <div th:each="el : ${requested_page}">
             <tr class="table-light">
                 <th scope="row"><p th:text = "${el.id}"></p></th>
                 <td><p th:text = "${el.text}"></p></td>
@@ -37,7 +37,7 @@
     </table>
 
     <!--    Пагинация -->
-    <div th:insert="blocks/pagination :: pagination"></div>
+<!--    <div th:insert="blocks/pagination :: pagination"></div>-->
     <!--    Пагинация -->
 
 </div>
