@@ -12,7 +12,7 @@
 
     <h1 align="center" th:text="${price}"/>
     <form action="/price/search" class="d-flex" method="post" role="search">
-        <input class="form-control me-4" name="text" placeholder="Поиск услуги" aria-label="Search" required>
+        <input class="form-control me-4" name="text" placeholder="Поиск услуги" aria-label="Search">
         <button class="btn btn-outline-primary" type="submit">Найти</button>
     </form>
     <table class="table">
@@ -25,6 +25,7 @@
             </tr>
         </thead>
         <tbody>
+        <p th:class="${!requested_page.isEmpty()} ? 'd-none'">Ничего не найдено:(</p>
         <div th:each="el : ${requested_page}">
             <tr class="table-light">
                 <th scope="row"><p th:text = "${el.id}"></p></th>

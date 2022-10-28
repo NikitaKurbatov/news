@@ -41,9 +41,15 @@ public class PriceController {
     }
     @PostMapping("/price/search")
     public String priceSearch (@RequestParam String text, Model model){
-        List<Price> pagePrices = priceRepository.findByText(text);
-        model.addAttribute("requested_page", pagePrices);
-        model.addAttribute("price", "Цены на услуги");
+        if (text == ""){
+            model.addAttribute("price", "Цены на услуги");
+            List<Price> pagePrices = priceRepository.findAll();
+            model.addAttribute("requested_page", pagePrices);
+        }else{
+            List<Price> pagePrices = priceRepository.findByText(text);
+            model.addAttribute("requested_page", pagePrices);
+            model.addAttribute("price", "Цены на услуги");
+        }
         return "/price";
     }
 
