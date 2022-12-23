@@ -1,5 +1,6 @@
 package com.news.news.controllers;
 
+import com.news.news.Entity.Role;
 import com.news.news.models.News;
 import com.news.news.models.User;
 import com.news.news.repo.UserRepository;
@@ -26,16 +27,16 @@ public class UserController {
     }
     @PostMapping("/registration")
     public String registrationNewUser (@RequestParam String login, @RequestParam String password, @RequestParam String password_2, @RequestParam String mobile_number, Model model){
-        if (password == password_2){
-            if (!userRepository.findByLogin(login).isEmpty()){
-//                model.addAttribute("error", "Такой логин уже есть");
-            }else{
-                User user = new User(login, password, mobile_number);
-                userRepository.save(user);
-            }
+        if (password.equals(password_2)){
+            User user = new User(login, password, mobile_number, Role.USER.toString());
+            userRepository.save(user);
+            model.addAttribute("successful_registration", "Регистрация прошла успешно!");
+            return "redirect:/news";
         }else{
             model.addAttribute("error", "Пароли не совпадают!");
+            model.addAttribute("passwords_not_match", "Пароли не совпадают!");
+            System.out.println("Password <>!");
+            return "redirect:/registration";
         }
-        return "redirect:/news";
     }
 }

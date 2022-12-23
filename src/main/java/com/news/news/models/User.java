@@ -18,11 +18,11 @@ public class User {
 
     private String role;
 
-    public User(String login, String password, String mobile_number) {
+    public User(String login, String password, String mobile_number, String role) {
         this.login = login;
         this.password = password;
         this.mobile_number = mobile_number;
-        this.role = Role.USER.toString();
+        this.role = role;
     }
 
     public User() {
